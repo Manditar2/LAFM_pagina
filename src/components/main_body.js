@@ -2,6 +2,32 @@ import React from 'react';
 
 class Main_body extends React.Component{
 
+    constructor(props){
+        super(props);
+        // 0: main, 1: calendario: 2: tabla, else: main.
+        this.state = {
+            local: 'Random',
+            visita: 'Random',
+            fecha:'NULL'
+        }   
+    }
+
+    componentDidMount() {
+        fetch('http://127.0.0.1:8000/next_match/a')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            this.setState({
+                local:data['local'],
+                visita:data['visita'],
+                fecha: data['fecha']
+            })
+        })
+        .catch(error => {
+            console.error('Error:', error); // No surprise, error handling for your inevitable mistakes
+        });
+    }
+
     render(){
         const body_page = {
             width:'100%',
@@ -47,17 +73,10 @@ class Main_body extends React.Component{
             alignItems:'center',
         }
 
-        const equipos = {
-            
-        }
-
-
 
         return <div style={body_page}>
                 <div style={contiene_titulo}>
                     <div className='titulo_main'>¡Bienvenidos a la Liga!</div>
-                </div>
-                <div style={descripción}>
                 </div>
                 <div style={contiene_captions}>
                     <div className='caption'>
@@ -68,9 +87,9 @@ class Main_body extends React.Component{
                         ahora somos más de 200 personas jugando en el mayor campeonato de maipú. </div>
                     </div>
                     <div style={contiene_info_partido}>
-                    <div className='info_partido'> Próximo encuentro </div>
+                    <div className='info_partido'> Próximo encuentro {this.state.fecha}</div>
                     <div>
-                        Redacted vs Redacted
+                        [FOTO] {this.state.local} VS [FOTO] {this.state.visita}
                     </div>
                     </div>
 

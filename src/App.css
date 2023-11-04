@@ -216,6 +216,7 @@ monospace;
   padding: 9px;
   margin: 5px;
   border: none;
+  cursor: pointer;
 }
 
 .boton_navbar:hover {
@@ -223,6 +224,7 @@ monospace;
 }
 .boton_navbar_login {
   background-color: #000E00;
+  cursor: pointer;
   flex-direction: row;
   display: 'flex';
   border-radius: 5%;
@@ -287,4 +289,15 @@ monospace;
   text-align: center;
   font-size: 40px;
   font-weight: 590;
+}
+
+.contiene_tabla {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 80%;
+  display: flex;
+  padding-top: 20px;
+  box-shadow: 20px 12px 20px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
