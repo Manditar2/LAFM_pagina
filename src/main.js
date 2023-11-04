@@ -4,8 +4,33 @@ import {IoLogIn} from "react-icons/io5";
 
 
 const Main_body = React.lazy(() => import('./components/main_body'))
-
+const Calendario = React.lazy(() => import('./components/calendario'))
 class Main_page extends React.Component{
+
+    constructor(props){
+        super(props);
+        // 0: main, 1: calendario: 2: tabla, else: main.
+        this.state = {
+            ruta: 0,
+        }
+        this.renderizar_componentes = this.renderizar_componentes.bind(this)
+    }
+
+    renderizar_componentes(){
+        if(this.state.ruta === 0){
+            return (<Main_body/>)
+        }
+        else if(this.state.ruta == 1){
+            return (<Calendario/>)
+        }
+    }
+
+    seleccionar_ruta(value){
+        this.setState({ruta: value})
+    }
+
+
+
 
     render(){
         const caja_principal = {
@@ -83,10 +108,14 @@ class Main_page extends React.Component{
             <div style={navbar}>
                 <div style={separa}>
                 <div className='contiene_botones'>
-                    <div className='boton_navbar'><a href="#" style={link}>Inicio</a></div>
+                    <div className='boton_navbar' onClick = { () => {this.seleccionar_ruta(0)} } >
+                        <a style={link}>Inicio</a>
+                        </div>
                     <div className='boton_navbar'><a href="#" style={link}>Posiciones</a></div>
                     <div className='boton_navbar'><a href="#" style={link}>Miembros</a></div>
-                    <div className='boton_navbar'><a href="#" style={link}>Calendario</a></div>
+                    <div className='boton_navbar' onClick = { () => {this.seleccionar_ruta(1)}} >
+                        <a style={link}>Calendario</a>
+                        </div>
                     <div className='boton_navbar'><a href="#" style={link}>Contacto</a></div>
                 </div>
                 
@@ -103,8 +132,8 @@ class Main_page extends React.Component{
                 </div>
                 </div>
                 <div style={body_page}>
-                    <Suspense fallback = {<div>Loading ..</div>}>
-                    <Main_body/>
+                    <Suspense fallback = {<div> Loading ..</div>}>
+                    {this.renderizar_componentes()}
                     </Suspense>
                 </div>
                 </div>
