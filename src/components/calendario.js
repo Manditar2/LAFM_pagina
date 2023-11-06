@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {Suspense} from 'react';
+
+const MyTable = React.lazy(() => import('./tabla'))
 
 class Calendario extends React.Component{
 
@@ -30,7 +32,9 @@ class Calendario extends React.Component{
             <div className='titulo_main'>Revisa los próximos encuentros</div>
             </div>
             <div className='contiene_tabla'>
-                awa
+            <Suspense fallback = {<div> Loading ..</div>}>
+                <MyTable/>
+            </Suspense>
             </div>
         </div>
     }
