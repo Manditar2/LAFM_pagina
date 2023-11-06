@@ -1,6 +1,8 @@
 import React from 'react';
+import { Suspense } from 'react';
 
 class Main_body extends React.Component{
+    
 
     constructor(props){
         super(props);
@@ -8,25 +10,50 @@ class Main_body extends React.Component{
         this.state = {
             local: 'Random',
             visita: 'Random',
-            fecha:'NULL'
+            fecha:'NULL',
+            imageRoutes: {
+                'Santiago Bueras': '../images/teams/el_cantar.jpg',
+                'KTC UNIDO': '../images/teams/ktc.jpg',
+                'KTC JUNIOR': '../images/teams/ktc.jpg',
+                'Sporting Satelite': '../images/teams/sporting.jpg'
+                // ... and so on for your images
+              },
+            imagen_visita: null,
+            imagen_local: null
         }   
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/next_match/a')
+        fetch('http://127.0.0.1:8000/routes/match')
         .then(response => response.json())
         .then(data => {
             console.log(data)
             this.setState({
-                local:data['local'],
-                visita:data['visita'],
+                local: data['local'],
+                visita: data['visita'],
                 fecha: data['fecha']
             })
+            this.load_image('KTC JUNIOR', false)
+            this.load_image(data['visita'], true)
         })
         .catch(error => {
             console.error('Error:', error); // No surprise, error handling for your inevitable mistakes
         });
     }
+
+    async load_image(team_name, visita){
+        try{
+        const importedImage = await import(this.state.imageRoutes[team_name]);
+        if (visita){
+            this.setState({imagen_visita: importedImage})
+        }
+        else {
+            this.setState({imagen_local: importedImage})
+        }
+        } catch (error) {
+            console.error('Error loading image:', error);
+        }
+    };
 
     render(){
         const body_page = {
@@ -89,7 +116,8 @@ class Main_body extends React.Component{
                     <div style={contiene_info_partido}>
                     <div className='info_partido'> Próximo encuentro {this.state.fecha}</div>
                     <div>
-                        [FOTO] {this.state.local} VS [FOTO] {this.state.visita}
+                        [FOTO]
+                        {this.state.local} VS [FOTO] {this.state.visita}
                     </div>
                     </div>
 

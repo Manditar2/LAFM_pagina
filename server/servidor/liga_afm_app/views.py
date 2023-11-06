@@ -5,6 +5,7 @@ from django.db.models import Q
 
 
 from .models import *
+from django.core.serializers import serialize
 
 # Create your views here.
 def index(request):
@@ -18,3 +19,8 @@ def get_nextMatch(request):
            'fecha': last_match.date
     }
     return JsonResponse(ans)
+
+def get_allMatchs(request):
+    matches = Partido.objects.all().values('partido_id', 'id_local__team_name', 'id_visita__team_name', 'date', 'goles_local', 'goles_visita')
+    print(matches)
+    return JsonResponse(list(matches), safe=False)
