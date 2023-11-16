@@ -2,7 +2,6 @@ import React from 'react';
 import { Suspense } from 'react';
 
 class Main_body extends React.Component{
-    
 
     constructor(props){
         super(props);
@@ -22,7 +21,7 @@ class Main_body extends React.Component{
             imagen_local: null
         }   
     }
-
+    
     componentDidMount() {
         fetch('http://127.0.0.1:8000/routes/match')
         .then(response => response.json())
@@ -31,7 +30,8 @@ class Main_body extends React.Component{
             this.setState({
                 local: data['local'],
                 visita: data['visita'],
-                fecha: data['fecha']
+                fecha: data['fecha'],
+                hora: data['hora']
             })
             this.load_image('KTC JUNIOR', false)
             this.load_image(data['visita'], true)
@@ -40,21 +40,22 @@ class Main_body extends React.Component{
             console.error('Error:', error); // No surprise, error handling for your inevitable mistakes
         });
     }
-
+    
+    
     async load_image(team_name, visita){
         try{
-        const importedImage = await import(this.state.imageRoutes[team_name]);
-        if (visita){
-            this.setState({imagen_visita: importedImage})
-        }
-        else {
-            this.setState({imagen_local: importedImage})
+            const importedImage = await import(this.state.imageRoutes[team_name]);
+            if (visita){
+                this.setState({imagen_visita: importedImage})
+            }
+            else {
+                this.setState({imagen_local: importedImage})
         }
         } catch (error) {
             console.error('Error loading image:', error);
         }
     };
-
+    
     render(){
         const body_page = {
             width:'100%',
@@ -100,7 +101,6 @@ class Main_body extends React.Component{
             alignItems:'center',
         }
 
-
         return <div style={body_page}>
                 <div style={contiene_titulo}>
                     <div className='titulo_main'>¡Bienvenidos a la Liga!</div>
@@ -114,7 +114,7 @@ class Main_body extends React.Component{
                         ahora somos más de 200 personas jugando en el mayor campeonato de maipú. </div>
                     </div>
                     <div style={contiene_info_partido}>
-                    <div className='info_partido'> Próximo encuentro {this.state.fecha}</div>
+                    <div className='info_partido'> Próximo encuentro {this.state.fecha} - {this.state.hora}</div>
                     <div>
                         [FOTO]
                         {this.state.local} VS [FOTO] {this.state.visita}
@@ -123,7 +123,8 @@ class Main_body extends React.Component{
 
                 </div>
         </div>
-    }
+    } 
 
 }
+
 export { Main_body  as default} 
