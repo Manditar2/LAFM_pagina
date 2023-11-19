@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+/*import React, {Suspense} from 'react';
 
 const MyTable = React.lazy(() => import('./tabla'))
 
@@ -38,11 +38,69 @@ class Calendario extends React.Component{
             </div>
         </div>
     }
+}
+export { Calendario  as default} */
+
+import React from 'react';
+import { Suspense } from 'react';
+
+class Main_body extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+        partidos: [] // Asegúrate de inicializar correctamente tu estado
+        };
+    }
     
+    componentDidMount() {
+        fetch('http://127.0.0.1:8000/routes/schedule')
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                partidos: data,
+            })
+        })
+    }
 
+    renderPartidosPorSemana(matchweekData) {
+            return matchweekData.map(partido => (
+            <div key={partido.match_id}>
+                {partido.played ? (<p>{partido.team1__name} {partido.score1} - {partido.score2} {partido.team2__name}</p>
+    ) : (
+        <p>{partido.team1__name} - {partido.team2__name} | {partido.date} {partido.hour}</p>
+    )}
+            </div>
+            ));
+        }
+    render() {
+        const { partidos } = this.state;
+        // Verifica si partidos existe antes de mapear
+        if (!partidos) {
+        return <div>Cargando...</div>;
+        }
 
+        // Agrupa los partidos por matchweek
+        const partidosPorSemana = partidos.reduce((acc, partido) => {
+        const { matchweek } = partido;
+        if (!acc[matchweek]) {
+            acc[matchweek] = [];
+        }
+        acc[matchweek].push(partido);
+        return acc;
+        }, {});
 
+        return (
+        <div>
+            {Object.keys(partidosPorSemana).map(matchweek => (
+            <div key={matchweek}>
+                <h2>Fecha {matchweek}</h2>
+                {this.renderPartidosPorSemana(partidosPorSemana[matchweek])}
+            </div>
+            ))}
+        </div>
+        );
+    }
 
 }
 
-export { Calendario  as default} 
+export { Main_body  as default} 

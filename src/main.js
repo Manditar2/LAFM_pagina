@@ -30,8 +30,6 @@ class Main_page extends React.Component{
     }
 
 
-
-
     render(){
         const caja_principal = {
             width:'100%',
@@ -118,7 +116,6 @@ class Main_page extends React.Component{
                         </div>
                     <div className='boton_navbar'><a href="#" style={link}>Contacto</a></div>
                 </div>
-                
                 <div className='boton_navbar_login'>
                     <div style={contiene_icono}><IoLogIn style={icono_login}/></div></div>
 

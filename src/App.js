@@ -9,6 +9,7 @@ function App() {
 
 const Login = React.lazy(() => import('./components/login'))
 const Main_page = React.lazy(() => import('./main'))
+const Admin_page = React.lazy(() => import('./admin'))
 
   return (
     <div>
@@ -17,6 +18,8 @@ const Main_page = React.lazy(() => import('./main'))
         <Routes>
         <Route path="/" element={<Login/>} />
         <Route path="/Main" element={<Main_page/>} />
+        <Route path="/admin" element={<Admin_page/>} />
+
         </Routes>
       </Suspense>
       </Router>
