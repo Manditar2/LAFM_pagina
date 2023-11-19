@@ -1,4 +1,5 @@
 import React, { Suspense }  from 'react';
+import { LuSwords } from "react-icons/lu";
 import { BsShieldX } from "react-icons/bs";
 import { FaPray } from 'react-icons/fa';
 
@@ -8,7 +9,7 @@ class Admin_schedule extends React.Component{
         const header = {
             width:'100%',
             height:'8%',
-            backgroundColor:'#151500',
+            backgroundColor:'#270101',
             color:'white',
             borderTopLeftRadius:'10px',
             borderTopRightRadius:'10px',
@@ -32,7 +33,7 @@ class Admin_schedule extends React.Component{
             justifyContent:'center'
         }
         const contiene_iconos ={
-            width:'45%',
+            width:'40%',
             height:'100%',
             display:'flex',
             justifyContent:'center',
@@ -40,7 +41,7 @@ class Admin_schedule extends React.Component{
             flexDirection:'column', 
         }
         const dummy_separator = {
-            width:'10%',
+            width:'20%',
             height:'100%',
             display:'flex',
             justifyContent:'center',
@@ -49,8 +50,15 @@ class Admin_schedule extends React.Component{
         const icon_size = {
             width:'80%',
             height:'60%',
-            color:'#787867',
+            color:'#666699',
         }
+
+        const swords = {
+            width:'30%',
+            height:'50%',
+            color:'#464555',
+        }
+
 
         const contiene_team_name = {
             height:'10%',
@@ -60,10 +68,48 @@ class Admin_schedule extends React.Component{
         const contiene_form = {
             width:'100%',
             height:'30%',
-            backgroundColor:'blue',
             display:'flex',
+            flexDirection:'column',
+        }
+        const form_box = {
+            width:'100%',
+            height:'100%',
+            display:'flex',
+            flexDirection:'column',
+        }
+
+        const input_boxes = {
+            width:'100%',
+            height:'40%',
+            display:'flex',
+            flexDirection:'row',
+        }
+
+        
+        const contiende_select = {
+            width:'40%',
+            display:'flex',
+            justifyContent:'center',
+            height:'100%',
         }
         
+        const date_box = {
+            width:'20%',
+            display:'flex',
+            justifyContent:'center',
+            alignItems:'center',
+            flexDirection:'column',
+        }
+
+        const contiene_submit = {
+            display:'flex',
+            width:'100%',
+            height:'70%',
+            justifyContent:'end',
+            alignItems:'center',
+            marginRight:'15%',
+        }
+
 
         return <div className='contiene_schedule'>
             <div style={header}>
@@ -76,7 +122,7 @@ class Admin_schedule extends React.Component{
                     <div style={contiene_team_name}>Santiago Bueras</div>
                     </div>
                     <div style={dummy_separator}>
-                        Se enfrentan
+                    <LuSwords style={swords}/>
                     </div>
                     <div style={contiene_iconos}>
                     <BsShieldX style={icon_size}/>
@@ -85,8 +131,31 @@ class Admin_schedule extends React.Component{
                 </div>
             </div>
             <div style={contiene_form}>
-                <form>
-                    
+                <form action="/procesar-formulario" method="post" style={form_box}>
+                    <div style={input_boxes}>
+                    <div style={contiende_select}>
+                    <select id="seleccionarColor" name="color" className='select_formulario'>
+                <option value="1">Santiago Bueras</option>
+                <option value="2">JK UNIDOS</option>
+                <option value="3">JK JUNIORS</option>
+                </select>
+                </div>
+                <div style={date_box}>
+                <label for="fecha_encuentro">Fecha</label>
+                <input type="date" id="fecha_encuentro" name="fecha_encuentro" className='date_input'></input>
+                </div>
+                <div style={contiende_select}>
+                    <select id="seleccionarColor" name="color" className='select_formulario'>
+                    <option value="1">Santiago Bueras</option>
+                <option value="2">JK UNIDOS</option>
+                <option value="3">JK JUNIORS</option>
+                </select>
+                </div>
+                    </div>
+                    <div style={contiene_submit}>
+                    <button type="submit" className='boton_schedule_form'>Submit</button>
+                    </div>
+
                 </form>
             </div>
         </div>
