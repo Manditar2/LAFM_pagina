@@ -139,12 +139,6 @@ class Login extends React.Component{
                     <div style ={contiene_imagen}><div className = "imagen_login"> </div></div>
                     <h2>¡Bienvenidos a la Liga!</h2>
                     <div>Club amigos del fútbol de Maipú</div>
-                    {/* <h4>Lenguajes de favoritos:</h4>
-                    <div>
-                        <DiJava style={icono_habilidad}/>
-                        <DiPython style={icono_habilidad}/>
-                        <DiJavascript style={icono_habilidad} />
-                    </div> */}
 
                 </div>
                 <div style={contenedor_derecho}>

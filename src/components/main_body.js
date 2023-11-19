@@ -77,14 +77,6 @@ class Main_body extends React.Component{
             fontWeight:'550',
             color:'#000E00',
         }
-        const descripción = {
-            width:'100%',
-            height:'10%',
-            display:'flex',
-            justifyContent:'center',
-            paddingTop:'20px',
-            color:'#000E00',
-        }
         const contiene_captions = {
             width:'100%',
             height:'90%',

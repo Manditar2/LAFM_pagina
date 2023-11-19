@@ -308,6 +308,10 @@ monospace;
  h3{
   font-family: 'Lato', sans-serif;
  }
+ h5{
+  font-family: 'Lato', sans-serif;
+  color:'#ACA9BB';
+ }
  thead{
   font-family: 'Lato', sans-serif;
   border-radius: 10px;
@@ -315,4 +319,58 @@ monospace;
  }
  table{border-collapse: collapse;
   border-radius: 10px;
+}
+
+/* Vista del admin */
+.boton_lower_body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  height: 10%;
+  background-color: #002278;
+}
+.boton_lower_body:hover {
+  background-color: #011752;
+}
+
+.boton_end_body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  height: 16%;
+  background-color: #002278;
+  color:#FAF7FF;
+}
+.boton_end_body:hover {
+  background-color: #011752;
+}
+.left_boton_lowerBody {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right_boton_lowerBody{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 450;
+  color:#ACA9BB;
+}
+
+.contiene_schedule{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  display:flex;
+  flex-direction: column;
+  width:90%;
+  height:70%;
+  border-radius:10px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
 }

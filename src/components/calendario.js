@@ -38,13 +38,7 @@ class Calendario extends React.Component{
             </div>
         </div>
     }
-    
-
-
-
-
 }
-
 export { Calendario  as default} */
 
 import React from 'react';
@@ -57,6 +51,7 @@ class Main_body extends React.Component{
         partidos: [] // Asegúrate de inicializar correctamente tu estado
         };
     }
+    
     componentDidMount() {
         fetch('http://127.0.0.1:8000/routes/schedule')
         .then(response => response.json())
@@ -66,6 +61,7 @@ class Main_body extends React.Component{
             })
         })
     }
+
     renderPartidosPorSemana(matchweekData) {
             return matchweekData.map(partido => (
             <div key={partido.match_id}>

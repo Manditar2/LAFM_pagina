@@ -15,11 +15,6 @@ def index(request):
 def get_nextMatch(request):
     ahora = timezone.now()
     next_match = match.objects.filter(played=False, date__gte=ahora).order_by('date', 'hour').first()
-    print(next_match)
-    print(next_match.team1.name)
-    print(next_match.team2.name)
-    print(next_match.date)
-    print(next_match.hour)
     
     if next_match:
         ans = {'local': next_match.team1.name,

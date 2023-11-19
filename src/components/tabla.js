@@ -5,7 +5,6 @@ class MyTable extends Component {
     super(props);
     this.state = {
       data: [],
-      page: 1, // initial page
       loading: false,
       mappedData: [],
     };
@@ -85,7 +84,6 @@ class MyTable extends Component {
         </table>
         {this.state.loading && <div>Loading more data...</div>}
         {console.log(this.state.mappedData)}
-        {console.log("uwu")}
       </div>
     );
   }

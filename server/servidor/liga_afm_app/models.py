@@ -84,7 +84,7 @@ class match(models.Model):
     score2 = models.IntegerField(default=0, null=True)
     winner = models.IntegerField(default=None, null=True)
     hour = models.TimeField()
-    matchweek = models.IntegerField()
+    #matchweek = models.IntegerField()
     played = models.BooleanField(default=False)
     
     def __str__(self):
@@ -123,7 +123,7 @@ class tables(models.Model):
     matchlost = models.IntegerField()
     goalsfor = models.IntegerField()
     goalsagainst = models.IntegerField()
-    goalsdifference = models.IntegerField()
+    #goalsdifference = models.IntegerField()
     points = models.IntegerField()
     
     def __str__(self):
