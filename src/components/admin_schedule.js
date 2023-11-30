@@ -9,13 +9,11 @@ class Admin_schedule extends React.Component{
         const header = {
             width:'100%',
             height:'8%',
-            backgroundColor:'#270101',
-            color:'white',
-            borderTopLeftRadius:'10px',
-            borderTopRightRadius:'10px',
             display:'flex',
             justifyContent:'center',
             alignItems:'center',
+            backgroundColor:'#4B4453',
+            color:'white'
         }
 
         const body_scheduler ={
@@ -153,7 +151,7 @@ class Admin_schedule extends React.Component{
                 </div>
                     </div>
                     <div style={contiene_submit}>
-                    <button type="submit" className='boton_schedule_form'>Submit</button>
+                    <button type="submit" className='boton_schedule_form'>Agregar</button>
                     </div>
 
                 </form>
