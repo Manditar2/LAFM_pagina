@@ -419,3 +419,46 @@ monospace;
   background-color: #3498db;
   color: #fff;
 }
+
+/* Team_managment  */
+
+.contiene_managment{
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  display:flex;
+  flex-direction: column;
+  background-color:#01040f ;
+  width:90%;
+  height:95%;
+  border-radius:10px;
+  box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.boton_lower_managment {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  color:#0097BC;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  background-color: #01040f;
+  transition: background-color 0.5s, color 0.3s;
+}
+
+.boton_lower_managment:hover {
+  background-color: #121728;
+  color:#15bbe4;
+}
+
+
+
+.crud_team_body{
+  font-family: 'Lato', sans-serif;
+  font-weight: 450;
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  height:100%;
+}

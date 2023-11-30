@@ -134,7 +134,6 @@ class Login extends React.Component{
                 <div className = "contenedor_login_izquierdo">
                     <div style = {titulo_div}>
                     <DiGithubBadge style = {icono} />
-                    <div style = {git}>Manditar2</div>
                     </div>
                     <div style ={contiene_imagen}><div className = "imagen_login"> </div></div>
                     <h2>¡Bienvenidos a la Liga!</h2>
@@ -154,7 +153,7 @@ class Login extends React.Component{
                                         <input type = "checkbox" id = "keep_conectado"></input>
                                         <label for = "keep_conectado">Mantener conectado</label>
                                         </div>
-                                        <div style ={registrate}>Regístrate</div>
+                                        <div style ={registrate}></div>
                                     </div>
                                 <input type = "submit" className = "login_boton_enviar" value = "Acceder"></input>
                             </form>

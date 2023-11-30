@@ -8,7 +8,37 @@ import { MdAddAPhoto } from "react-icons/md";
 
 
 const Admin_schedule = React.lazy(() => import('./components/admin_schedule'))
+const Team_managment = React.lazy(() => import('./components/team_managment'))
+
 class Admin extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+          selected: 0,
+        };
+        this.renderizar_componentes = this.renderizar_componentes.bind(this)
+      }
+
+    
+    renderizar_componentes(){
+    if(this.state.selected === 0){
+        return (<Admin_schedule/>)
+    }
+    else if (this.state.selected === 3){
+
+        return (<Team_managment/>)
+    }
+    else{
+        return (<div>owo</div>)
+    }
+
+
+    }
+    seleccionar_opcion(value){
+        value = parseInt(value)
+        console.log(value)
+        this.setState({selected: value})
+    }
 
     render(){
 
@@ -143,7 +173,7 @@ class Admin extends React.Component{
                     </div>
                     </div>
                     <div style={lower_body}>
-                        <div className='boton_lower_body'>
+                        <div className='boton_lower_body' onClick={ () => {this.seleccionar_opcion(0)} }>
                             <div className='left_boton_lowerBody'>
                             <FaCalendarAlt style={calendario_icon}/>
                             </div>
@@ -152,7 +182,7 @@ class Admin extends React.Component{
                             </div>
                         </div>
 
-                        <div className='boton_lower_body'>
+                        <div className='boton_lower_body' onClick={ () => {this.seleccionar_opcion(1)} }>
                         <div className='left_boton_lowerBody'>
                             <IoFootballOutline style={footbal_icon}/>
                         </div>
@@ -161,7 +191,7 @@ class Admin extends React.Component{
                             </div>
                         </div>
                         
-                        <div className='boton_lower_body'>
+                        <div className='boton_lower_body' onClick={ () => {this.seleccionar_opcion(3)} }>
                         <div className='left_boton_lowerBody'>
                             <RiTeamLine style={team_icon}/>
                         </div>
@@ -191,7 +221,9 @@ class Admin extends React.Component{
 
             </div>
             <div style={body_box}>
-                <Admin_schedule/>
+            <Suspense fallback = {<div> Loading ..</div>}>
+                {this.renderizar_componentes()}
+            </Suspense>
             </div>
         </div>
     }
